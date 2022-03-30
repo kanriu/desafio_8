@@ -1,0 +1,26 @@
+{
+  "name": "desafio_8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "init": "node ./util/init.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vscode/sqlite3": "^5.0.7",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "faker": "^5.5.3",
+    "moment": "^2.29.1",
+    "mongoose": "^6.2.7",
+    "normalizr": "^3.6.2",
+    "socket.io": "^4.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
