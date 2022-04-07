@@ -5,8 +5,12 @@
   const app = express();
   const http = require("http");
   const { Server } = require("socket.io");
-  const { router } = require("./routes/product");
-  const { HOSTNAME, SCHEMA, DATABASE, PORT: PORTDB } = require("./config");
+  const routerProduct = require("./routes/product");
+  const routerView = require("./routes/view");
+  const cookieParser = require("cookie-parser");
+  const session = require("express-session");
+  const MongoStore = require("connect-mongo");
+  const { USER, PASSWORD, SCHEMA, DATABASE } = require("./config");
 
   const engine = require("./engine/hbs");
 
@@ -20,7 +24,10 @@
   const products = [];
 
   mongoose
-    .connect(`${SCHEMA}://${HOSTNAME}:${PORTDB}/${DATABASE}`)
+    .connect(
+      `${SCHEMA}://${USER}:${PASSWORD}@cluster0.amhii.mongodb.net/${DATABASE}?retryWrites=true&w=majority`,
+      { useNewUrlParser: true, useUnifiedTopology: true }
+    )
     .then(() => {
       server.listen(PORT, () =>
         console.log(`Server is running on http://localhost:${PORT}`)
@@ -30,13 +37,28 @@
 
   try {
     const messages = await Message.getAll();
+
     engine(app, path);
 
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+    app.use(cookieParser());
+    app.use(
+      session({
+        store: new MongoStore({
+          mongoUrl: `${SCHEMA}://${USER}:${PASSWORD}@cluster0.amhii.mongodb.net/${DATABASE}?retryWrites=true&w=majority`,
+          mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
+        }),
+
+        secret: "secret",
+        resave: false,
+        saveUninitialized: false,
+        expires: 60000,
+      })
+    );
     app.use("/static", express.static(path.join(__dirname, "public")));
-    app.get("/", (req, res) => res.render("main"));
-    app.use("/api/productos-test", router);
+    app.use("/", routerView);
+    app.use("/api/productos-test", routerProduct);
 
     io.on("connection", (socket) => {
       console.log(`an user connected: ${socket.id}`);
@@ -49,7 +71,6 @@
       });
 
       socket.on("message", async (item) => {
-        console.log(item);
         messages.push(item);
         await Message.save(item);
         socket.broadcast.emit("message", item);

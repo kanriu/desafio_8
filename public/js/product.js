@@ -12,6 +12,8 @@ const alias = document.getElementById("alias");
 const avatar = document.getElementById("avatar");
 const message = document.getElementById("message");
 const contentChat = document.getElementById("content-chat");
+const h1Logout = document.getElementById("h1-logout");
+const welcome = document.getElementById("welcome");
 
 axios
   .get("http://localhost:8080/api/productos-test")
@@ -41,16 +43,18 @@ const renderEmpty = () => {
 };
 
 const render = (data) => {
-  if (document.getElementById("empty")) {
-    contentTable.removeChild(document.getElementById("empty"));
+  if (contentTable) {
+    if (document.getElementById("empty")) {
+      contentTable.removeChild(document.getElementById("empty"));
+    }
+    const rowElement = document.createElement("tr");
+    rowElement.innerHTML = `
+      <td>${data.title}</td>
+      <td>$${data.price}</td>
+      <td><img src="${data.thumbnail}" width="50px"/></td>
+    `;
+    contentTable.appendChild(rowElement);
   }
-  const rowElement = document.createElement("tr");
-  rowElement.innerHTML = `
-    <td>${data.title}</td>
-    <td>$${data.price}</td>
-    <td><img src="${data.thumbnail}" width="50px"/></td>
-  `;
-  contentTable.appendChild(rowElement);
 };
 
 socket.on("send_products", (data) => {
@@ -63,18 +67,39 @@ socket.on("send_products", (data) => {
 
 socket.on("product", render);
 
-btnSubmit.addEventListener("click", (e) => {
-  e.preventDefault();
-  const product = {
-    title: title.value,
-    price: price.value,
-    thumbnail: thumbnail.value,
-  };
+if (btnSubmit) {
+  btnSubmit.addEventListener("click", (e) => {
+    e.preventDefault();
+    const product = {
+      title: title.value,
+      price: price.value,
+      thumbnail: thumbnail.value,
+    };
 
-  socket.emit("product", product);
-  render(product);
-  clearInputs();
-});
+    socket.emit("product", product);
+    render(product);
+    clearInputs();
+  });
+}
+
+const cookieParser = () => {
+  return (document.cookie || "").split("; ").reduce((obj, cookie) => {
+    const [name, value] = cookie.split("=");
+    obj[name] = decodeURI(value);
+    return obj;
+  }, {});
+};
+
+if (h1Logout) {
+  h1Logout.innerHTML = `Hasta luego ${cookieParser().username}`;
+  setTimeout(() => {
+    window.location.replace("/login");
+  }, 2000);
+}
+
+if (welcome) {
+  welcome.innerHTML = `Bienvenido ${cookieParser().username}`;
+}
 
 const renderChat = (data) => {
   const msgElement = document.createElement("div");
@@ -88,24 +113,25 @@ const renderChat = (data) => {
   contentChat.appendChild(msgElement);
 };
 
-btnSend.addEventListener("click", (e) => {
-  e.preventDefault();
-  const chat = {
-    email: email.value,
-    nombre: nombre.value,
-    apellido: apellido.value,
-    edad: edad.value,
-    alias: alias.value,
-    avatar: avatar.value,
-    text: message.value,
-    timestamp: moment().format("DD/MM/YYYY hh:mm:ss"),
-  };
+if (btnSend) {
+  btnSend.addEventListener("click", (e) => {
+    e.preventDefault();
+    const chat = {
+      email: email.value,
+      nombre: nombre.value,
+      apellido: apellido.value,
+      edad: edad.value,
+      alias: alias.value,
+      avatar: avatar.value,
+      text: message.value,
+      timestamp: moment().format("DD/MM/YYYY hh:mm:ss"),
+    };
 
-  socket.emit("message", chat);
-  console.log(chat);
-  renderChat(chat);
-  message.value = "";
-});
+    socket.emit("message", chat);
+    renderChat(chat);
+    message.value = "";
+  });
+}
 
 socket.on("send_messages", async (data) => {
   if (data.result.length !== 0) {

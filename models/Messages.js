@@ -21,6 +21,7 @@ class Messages {
   }
 
   async save(obj) {
+    console.log(obj);
     const content = {
       author: {
         email: obj.email,

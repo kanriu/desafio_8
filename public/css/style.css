@@ -19,6 +19,7 @@ body {
   margin-bottom: 25px;
   padding: 20px;
   width: 40%;
+  border-radius: 5px;
 }
 
 .row {
@@ -42,7 +43,7 @@ input {
   border-radius: 5px;
 }
 
-#btn-submit {
+.btn-submit {
   cursor: pointer;
   padding: 10px 10px;
   border: 1px solid transparent;
@@ -53,7 +54,7 @@ input {
   width: auto;
 }
 
-#btn-submit:hover {
+.btn-submit:hover {
   background-color: rgba(40, 167, 69, 0.8);
 }
 
@@ -105,8 +106,33 @@ td {
   color: #cb981c;
 }
 
+.logout {
+  color: darkblue;
+  background-color: cyan;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .input-messages {
   margin: 5px;
   height: 40px;
   width: 50%;
+}
+
+.btn-warning {
+  background-color: #fbc117;
+  border: 0px;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  height: 10%;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.btn-warning:hover {
+  background-color: rgba(251, 193, 23, 0.8);
+}
+.message-init {
+  color: #205d28;
 }
