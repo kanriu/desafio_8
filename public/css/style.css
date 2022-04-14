@@ -51,7 +51,9 @@ input {
   color: white;
   background-color: #28a745;
   transition: background-color 0.3s;
-  width: auto;
+  width: 30%;
+  text-decoration: none;
+  text-align: center;
 }
 
 .btn-submit:hover {
@@ -135,4 +137,18 @@ td {
 }
 .message-init {
   color: #205d28;
+}
+
+.content-error {
+  background-color: #fa8072;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  border-radius: 5px;
+  width: 60%;
+  height: 50%;
+}
+
+.m-20 {
+  margin: 50px;
 }

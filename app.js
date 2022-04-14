@@ -11,6 +11,8 @@
   const session = require("express-session");
   const MongoStore = require("connect-mongo");
   const { USER, PASSWORD, SCHEMA, DATABASE } = require("./config");
+  const passport = require("passport");
+  const flash = require("express-flash");
 
   const engine = require("./engine/hbs");
 
@@ -35,6 +37,9 @@
     })
     .catch((err) => console.log("error on mongo", err));
 
+  const initializePassport = require("./passport/local");
+  initializePassport(passport);
+
   try {
     const messages = await Message.getAll();
 
@@ -42,6 +47,7 @@
 
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+
     app.use(cookieParser());
     app.use(
       session({
@@ -59,7 +65,7 @@
     app.use("/static", express.static(path.join(__dirname, "public")));
     app.use("/", routerView);
     app.use("/api/productos-test", routerProduct);
-
+    app.use(flash());
     io.on("connection", (socket) => {
       console.log(`an user connected: ${socket.id}`);
 
