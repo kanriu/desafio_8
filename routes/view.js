@@ -4,6 +4,22 @@ const loggedIn = require("../middlewares/loggedIn");
 const passport = require("passport");
 const router = Router();
 
+router.get("/info", (req, res) => {
+  const entrada =
+    process.argv.slice(2).toString().replace(",", " ") ||
+    "No hay parámetros de entrada";
+  const info = {
+    entrada: entrada,
+    plataforma: process.platform,
+    version: process.version,
+    memoria: process.memoryUsage().rss,
+    path: process.execPath,
+    id: process.pid,
+    proyecto: process.cwd(),
+  };
+  res.render("info", { info });
+});
+
 router.get("/login", loggedIn, (req, res) => {
   res.clearCookie("username");
   res.render("login");

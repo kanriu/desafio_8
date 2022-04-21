@@ -18,13 +18,13 @@
 
   const server = http.createServer(app);
   const io = new Server(server);
-
-  const PORT = process.env.PORT || 8080;
+  const yargs = require("yargs/yargs")(process.argv.slice(2));
+  const args = yargs.default({ port: 8080 }).argv;
+  const PORT = args.port || 8080;
 
   const Message = require("./models/Messages");
 
   const products = [];
-
   mongoose
     .connect(
       `${SCHEMA}://${USER}:${PASSWORD}@cluster0.amhii.mongodb.net/${DATABASE}?retryWrites=true&w=majority`,
@@ -49,6 +49,7 @@
     app.use(express.urlencoded({ extended: true }));
 
     app.use(cookieParser());
+
     app.use(
       session({
         store: new MongoStore({

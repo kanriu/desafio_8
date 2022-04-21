@@ -1,7 +1,8 @@
+require("dotenv").config();
+
 module.exports = {
-  USER: "leosnayder",
-  PASSWORD: "coderhouse",
-  SCHEMA: "mongodb+srv",
-  DATABASE: "desafio_9",
-  PORT: "27017",
+  USER: process.env.USER,
+  PASSWORD: process.env.PASSWORD,
+  SCHEMA: process.env.SCHEMA,
+  DATABASE: process.env.DATABASE,
 };
