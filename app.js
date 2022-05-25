@@ -1,9 +1,9 @@
 //Heroku
+const express = require("express");
+const app = express();
 (async () => {
-  const express = require("express");
   const mongoose = require("mongoose");
   const path = require("path");
-  const app = express();
   const http = require("http");
   const { Server } = require("socket.io");
   const routerProduct = require("./routes/product");
@@ -21,7 +21,7 @@
   const io = new Server(server);
   const yargs = require("yargs/yargs")(process.argv.slice(2));
   const args = yargs.default({ port: 8080 }).argv;
-  const PORT = args.port || 8080;
+  const PORT = process.argv[2] || 8080;
 
   const Message = require("./models/Messages");
 
@@ -32,9 +32,9 @@
       { useNewUrlParser: true, useUnifiedTopology: true }
     )
     .then(() => {
-      server.listen(PORT, () =>
-        console.log(`Server is running on http://localhost:${PORT}`)
-      );
+      // server.listen(PORT, () =>
+      //   console.log(`Server is running on http://localhost:${PORT}`)
+      // );
     })
     .catch((err) => console.log("error on mongo", err));
 
@@ -91,3 +91,4 @@
     console.log("could not start servers");
   }
 })();
+module.exports = app;

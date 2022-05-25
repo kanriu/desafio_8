@@ -2,6 +2,7 @@ const { Router } = require("express");
 const auth = require("../middlewares/auth");
 const loggedIn = require("../middlewares/loggedIn");
 const passport = require("passport");
+const CPUs = require("os").cpus().length;
 const router = Router();
 
 router.get("/info", (req, res) => {
@@ -9,6 +10,7 @@ router.get("/info", (req, res) => {
     process.argv.slice(2).toString().replace(",", " ") ||
     "No hay parámetros de entrada";
   const info = {
+    procesadores: CPUs,
     entrada: entrada,
     plataforma: process.platform,
     version: process.version,
