@@ -4,8 +4,44 @@ const loggedIn = require("../middlewares/loggedIn");
 const passport = require("passport");
 const CPUs = require("os").cpus().length;
 const router = Router();
+const compression = require("compression");
 
 router.get("/info", (req, res) => {
+  const entrada =
+    process.argv.slice(2).toString().replace(",", " ") ||
+    "No hay parámetros de entrada";
+  const info = {
+    procesadores: CPUs,
+    entrada: entrada,
+    plataforma: process.platform,
+    version: process.version,
+    memoria: process.memoryUsage().rss,
+    path: process.execPath,
+    id: process.pid,
+    proyecto: process.cwd(),
+  };
+  res.render("info", { info });
+});
+
+router.get("/info-bloq", (req, res) => {
+  const entrada =
+    process.argv.slice(2).toString().replace(",", " ") ||
+    "No hay parámetros de entrada";
+  const info = {
+    procesadores: CPUs,
+    entrada: entrada,
+    plataforma: process.platform,
+    version: process.version,
+    memoria: process.memoryUsage().rss,
+    path: process.execPath,
+    id: process.pid,
+    proyecto: process.cwd(),
+  };
+  console.log(info);
+  res.render("info", { info });
+});
+
+router.get("/infozip", compression(), (req, res) => {
   const entrada =
     process.argv.slice(2).toString().replace(",", " ") ||
     "No hay parámetros de entrada";

@@ -22,7 +22,7 @@ axios
       render(element);
     });
   })
-  .catch((err) => console.log(err));
+  .catch((err) => logger.error(err));
 
 // conectar con socket io
 const socket = io();

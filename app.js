@@ -14,6 +14,7 @@ const app = express();
   const { USER, PASSWORD, SCHEMA, DATABASE } = require("./config");
   const passport = require("passport");
   const flash = require("express-flash");
+  const logger = require("./src/log");
 
   const engine = require("./engine/hbs");
 
@@ -33,10 +34,10 @@ const app = express();
     )
     .then(() => {
       // server.listen(PORT, () =>
-      //   console.log(`Server is running on http://localhost:${PORT}`)
+      //   logger.info(`Server is running on http://localhost:${PORT}`)
       // );
     })
-    .catch((err) => console.log("error on mongo", err));
+    .catch((err) => logger.error("error on mongo", err));
 
   const initializePassport = require("./passport/local");
   initializePassport(passport);
@@ -69,7 +70,7 @@ const app = express();
     app.use("/api/productos-test", routerProduct);
     app.use(flash());
     io.on("connection", (socket) => {
-      console.log(`an user connected: ${socket.id}`);
+      logger.info(`an user connected: ${socket.id}`);
 
       socket.emit("send_products", products);
 
@@ -87,8 +88,7 @@ const app = express();
       socket.emit("send_messages", messages);
     });
   } catch (e) {
-    console.log(e);
-    console.log("could not start servers");
+    logger.error(e);
   }
 })();
 module.exports = app;

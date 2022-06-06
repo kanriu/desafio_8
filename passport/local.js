@@ -3,19 +3,18 @@ const userModel = require("../models/Users");
 
 module.exports = (passport) => {
   const authenticateUser = async (email, password, done) => {
-    console.log(email, password);
     try {
       if (!(await userModel.existsByEmail(email))) {
-        console.log("no email");
+        logger.warn("no email");
         return done(null, false, { message: "user does not exist!" });
       }
 
       if (!(await userModel.isPasswordValid(email, password))) {
-        console.log("incorrect pwd");
+        logger.warn("incorrect pwd");
         return done(null, false, { message: "incorrect password!" });
       }
 
-      console.log("user");
+      logger.info("user");
       const user = await userModel.getByEmail(email);
 
       done(null, user);
@@ -34,8 +33,6 @@ module.exports = (passport) => {
         email,
         password: password,
       });
-
-      console.log(user);
 
       done(null, user);
     } catch (err) {
@@ -62,7 +59,6 @@ module.exports = (passport) => {
   // serializar usuario
   passport.serializeUser((user, done) => done(null, user.id));
   passport.deserializeUser(async (id, done) => {
-    console.log("id");
     return done(null, await userModel.getById(id));
   });
 };

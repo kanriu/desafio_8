@@ -1,0 +1,51 @@
+{"level":30,"time":1654013840356,"pid":17088,"hostname":"DESKTOP-ASD8LT6","msg":"Server is running on http://localhost:8080"}
+{"level":40,"time":1654015488611,"pid":12500,"hostname":"DESKTOP-ASD8LT6","msg":"Server is running on http://localhost:8080"}
+{"level":50,"time":1654015502817,"pid":12392,"hostname":"DESKTOP-ASD8LT6","msg":"Server is running on http://localhost:8080"}
+{"level":30,"time":1654016261893,"pid":18272,"hostname":"DESKTOP-ASD8LT6","msg":"Server is running on http://localhost:8080"}
+{"level":30,"time":1654471614270,"pid":18780,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654471655050,"pid":4748,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654471752358,"pid":18084,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654471768839,"pid":3200,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475590230,"pid":11580,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475630098,"pid":6296,"hostname":"DESKTOP-ASD8LT6","msg":"fork"}
+{"level":30,"time":1654475630100,"pid":6296,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475690903,"pid":1508,"hostname":"DESKTOP-ASD8LT6","msg":"cluster"}
+{"level":30,"time":1654475690904,"pid":1508,"hostname":"DESKTOP-ASD8LT6","msg":8}
+{"level":30,"time":1654475690906,"pid":1508,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475712200,"pid":6828,"hostname":"DESKTOP-ASD8LT6","msg":"cluster"}
+{"level":30,"time":1654475712201,"pid":6828,"hostname":"DESKTOP-ASD8LT6","msg":8}
+{"level":30,"time":1654475712203,"pid":6828,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475739004,"pid":12884,"hostname":"DESKTOP-ASD8LT6","msg":"cluster"}
+{"level":30,"time":1654475739005,"pid":12884,"hostname":"DESKTOP-ASD8LT6","msg":4}
+{"level":30,"time":1654475739007,"pid":12884,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475767325,"pid":13884,"hostname":"DESKTOP-ASD8LT6","msg":"cluster"}
+{"level":30,"time":1654475767325,"pid":13884,"hostname":"DESKTOP-ASD8LT6","msg":4}
+{"level":30,"time":1654475767327,"pid":13884,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475829435,"pid":11548,"hostname":"DESKTOP-ASD8LT6","msg":"cluster"}
+{"level":30,"time":1654475829435,"pid":11548,"hostname":"DESKTOP-ASD8LT6","msg":4}
+{"level":30,"time":1654475829437,"pid":11548,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475844383,"pid":14648,"hostname":"DESKTOP-ASD8LT6","msg":"cluster"}
+{"level":30,"time":1654475844384,"pid":14648,"hostname":"DESKTOP-ASD8LT6","msg":4}
+{"level":30,"time":1654475844384,"pid":14648,"hostname":"DESKTOP-ASD8LT6","msg":"ENTRO"}
+{"level":30,"time":1654475846508,"pid":13876,"hostname":"DESKTOP-ASD8LT6","msg":"cluster"}
+{"level":30,"time":1654475846497,"pid":15060,"hostname":"DESKTOP-ASD8LT6","msg":"cluster"}
+{"level":30,"time":1654475846515,"pid":7256,"hostname":"DESKTOP-ASD8LT6","msg":"cluster"}
+{"level":30,"time":1654475846508,"pid":13876,"hostname":"DESKTOP-ASD8LT6","msg":4}
+{"level":30,"time":1654475846516,"pid":13876,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475846498,"pid":15060,"hostname":"DESKTOP-ASD8LT6","msg":4}
+{"level":30,"time":1654475846510,"pid":15060,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475846515,"pid":7256,"hostname":"DESKTOP-ASD8LT6","msg":4}
+{"level":30,"time":1654475846523,"pid":7256,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475846501,"pid":16700,"hostname":"DESKTOP-ASD8LT6","msg":"cluster"}
+{"level":30,"time":1654475846502,"pid":16700,"hostname":"DESKTOP-ASD8LT6","msg":4}
+{"level":30,"time":1654475846512,"pid":16700,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475897300,"pid":3260,"hostname":"DESKTOP-ASD8LT6","msg":"ENTRO"}
+{"level":30,"time":1654475900341,"pid":15824,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475900296,"pid":18320,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475900480,"pid":10936,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475900334,"pid":7264,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475900595,"pid":5964,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475900614,"pid":18596,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475900635,"pid":1652,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654475900674,"pid":19256,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}
+{"level":30,"time":1654477943671,"pid":20108,"hostname":"DESKTOP-ASD8LT6","msg":"listening on: http://localhost:8080\n"}

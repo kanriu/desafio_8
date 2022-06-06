@@ -19,14 +19,19 @@
     "pm2:worker:8083": "pm2 start index.js -- --port=8083",
     "pm2:worker:8084": "pm2 start index.js -- --port=8084",
     "pm2:worker:8085": "pm2 start index.js -- --port=8085",
-    "pm2:cluster": "pm2 start cluster.config.js"
+    "pm2:cluster": "pm2 start cluster.config.js",
+    "profiling": "node --prof cluster.js",
+    "test:artillery:nobloq": "artillery quick --count=50 -n 20 http://localhost:8080/view/info > result_nobloq.txt",
+    "test:artillery:bloq": "artillery quick --count=50 -n 20 http://localhost:8080/view/info > result_bloq.txt"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@vscode/sqlite3": "^5.0.7",
+    "artillery": "^2.0.0-17",
     "bcrypt": "^5.0.1",
+    "compression": "^1.7.4",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.0",
@@ -42,9 +47,11 @@
     "normalizr": "^3.6.2",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
+    "pino": "^7.11.0",
+    "pino-pretty": "^7.6.1",
+    "pm2": "^5.2.0",
     "socket.io": "^4.4.1",
-    "yargs": "^17.4.1",
-    "pm2": "^5.2.0"
+    "yargs": "^17.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
